@@ -9,7 +9,7 @@ import { mailData } from "@/email/verification-email";
 export const createUser = async (data) => {
   const { name, email, password } = data;
   const verifToken = createToken({ name, email });
-  const existingUser = await db.user.findUnique({ where: { email } });
+  const existingUser = await db.user.findUnique({ where: { email: email } });
   if (existingUser) return { error: "User already exists" };
   const newUser = await db.user.create({
     data: {

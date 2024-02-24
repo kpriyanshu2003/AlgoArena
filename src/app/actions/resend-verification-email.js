@@ -10,20 +10,16 @@ export const resendVerificationEmail = async (email) => {
     const verificationToken = createToken({ email });
     const existingUser = await db.user.findUnique({ where: { email } });
     if (!existingUser) {
-        return { error: "User not found" };
+      return { error: "User not found" };
     }
 
     await db.user.update({
-        where: { email },
-        data: {
-            verificationToken
-        }
-    })
+      where: { email },
+      data: { verificationToken },
+    });
     await sendEmail(mailData(email, verificationToken));
-    return { success: "Email sent successfully" }
+    return { success: "Email sent successfully" };
   } catch (error) {
-    return {
-        error: "Error sending verification email",
-    }
+    return { error: "Error sending verification email" };
   }
 };

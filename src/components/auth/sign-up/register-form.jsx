@@ -113,7 +113,7 @@ export default function RegisterForm() {
             )}
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="confirmPassword">confirmPassword</Label>
+            <Label htmlFor="confirmPassword">Confirm Passsword</Label>
             <Input
               name="confirmPassword"
               placeholder="********"
